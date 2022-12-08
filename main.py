@@ -3,6 +3,8 @@ from pydantic import BaseModel
 
 import requests
 
+from frame_maker import start_make_frames
+
 
 # TODO: Добавить Flake8
 # TODO: Добавить нормальную архитектуру
@@ -34,5 +36,7 @@ async def createVideo(video: Video):
 
     with open('video.mp4', 'wb') as f: 
         f.write(response.content)
+
+    start_make_frames('video.mp4')
 
     return {"message": "success"}
